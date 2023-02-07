@@ -1,24 +1,66 @@
 #include <stdio.h>
+#include <assert.h>
 #include "node.h"
-int main() {
+#include "ll.h"
 
+void test_node();
+
+int main() {
+    test_node();
+
+    return 0;
+}
+
+
+
+#if DYNAMIC
+void test_node(){
+    node* node1 = node_init_hanging(16.5f);
+    node* node2 = node_init(16.6f, node1, NULL);
+    node* node3 = node_init(16.7f, node2, NULL);
+
+    set_next(node1, node2);
+    set_next(node2, node3);
+
+    //aka node2
+
+    assert(node1->next->data == 16.6f);
+    //aka node3
+    assert(node1->next->next->data == 16.7f);
+
+
+    set_next(node3, node1);
+    //aka node1
+    assert(node1->next->next->next->data == 16.5f);
+
+    free(node1);
+    free(node2);
+    free(node3);
+    printf("Node test success\n");
+}
+#else
+void test_node(){
     node node1;
     node node2;
     node node3;
-    initialize_node(&node1, 16.5f, NULL, NULL);
-    initialize_node(&node2, 16.6f, &node1, NULL);
-    initialize_node(&node3, 16.7f, &node2, NULL);
+    node_init(&node1, 16.5f, NULL, NULL);
+    node_init(&node2, 16.6f, &node1, NULL);
+    node_init(&node3, 16.7f, &node2, NULL);
 
     set_next(&node1, &node2);
     set_next(&node2, &node3);
 
-    printf("%.2f", node1.next->data);
-    printf("\n");
-    printf("%.2f", node1.next->next->data);
-    printf("\n");
+    //aka node2
+
+    assert(node1.next->data == 16.6f);
+    //aka node3
+    assert(node1.next->next->data == 16.7f);
+
 
     set_next(&node3, &node1);
-    printf("%.2f", node1.next->next->next->data);
-    printf("\n");
-    return 0;
+    //aka node1
+    assert(node1.next->next->next->data == 16.5f);
+    printf("Node test success\n");
 }
+}
+#endif //DYNAMIC

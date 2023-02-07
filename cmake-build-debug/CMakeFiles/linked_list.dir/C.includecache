@@ -6,11 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/mnt/c/Y2/Q2/APC/2/linked_list/main.c
-stdio.h
--
+/mnt/c/Y2/Q2/APC/2/linked_list/ll.h
 node.h
 /mnt/c/Y2/Q2/APC/2/linked_list/node.h
 
+/mnt/c/Y2/Q2/APC/2/linked_list/main.c
+stdio.h
+-
+assert.h
+-
+node.h
 /mnt/c/Y2/Q2/APC/2/linked_list/node.h
+ll.h
+/mnt/c/Y2/Q2/APC/2/linked_list/ll.h
+
+/mnt/c/Y2/Q2/APC/2/linked_list/node.h
+stdlib.h
+-
 
