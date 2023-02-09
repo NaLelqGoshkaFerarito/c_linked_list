@@ -74,6 +74,7 @@ void llist_prepend(linked_list* ll, node* prep){
 //gets node at index
 node* index(linked_list* ll, int index){
     node* curr_node = ll->first;
+    if (curr_node == NULL) return NULL;
     for (int i = 0; i < index; ++i) {
         if ((curr_node = curr_node->next) == NULL){
             return NULL;
