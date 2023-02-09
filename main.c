@@ -4,16 +4,30 @@
 #include "ll.h"
 
 void test_node();
+void test_linked_list_basic();
 
 int main() {
-    test_node();
-
+//    test_node();
+    test_linked_list_basic();
     return 0;
 }
 
-
-
 #if DYNAMIC
+void test_linked_list_basic(){
+    linked_list list;
+    llist_init(&list);
+    llist_prepend(&list, 16.5f);
+    llist_prepend(&list, 16.6f);
+    llist_prepend(&list, 16.7f);
+
+    llist_prepend(&list, 16.4f);
+    llist_prepend(&list, 16.3f);
+    llist_prepend(&list, 16.2f);
+
+    llist_destroy(&list);
+
+    printf("Basic list text was a success\n");
+}
 void test_node(){
     node* node1 = node_init_hanging(16.5f);
     node* node2 = node_init(16.6f, node1, NULL);

@@ -50,14 +50,16 @@ void node_init(node* current_node, float data, node* prev, node* next){
 
 void set_prev(node* current_node, node* prev_node){
     current_node->prev = prev_node;
+    prev_node->next = current_node;
 }
 
 void set_next(node* current_node, node* next_node){
     current_node->next = next_node;
+    next_node->prev = current_node;
 }
 
 void set_prev_next(node* current_node, node* prev_node, node* next_node){
-    current_node->prev = prev_node;
-    current_node->next = next_node;
+    set_next(current_node, next_node);
+    set_prev(current_node, prev_node);
 }
 #endif //LINKED_LIST_NODE_H
