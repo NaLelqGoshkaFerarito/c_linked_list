@@ -15,21 +15,24 @@ void llist_init(linked_list* ll){
 }
 
 #if DYNAMIC
-//void llist_append(linked_list* ll, float data){
-//    node* app = node_init_hanging(data);
-//    //if the list is empty first and last both become app
-//    if (ll->first == NULL){
-//        ll->first = app;
-//        ll->last = app;
-//        return;
-//    }
-//    set_next(ll->last, app);
-//    ll->last = app;
-//}
+void llist_append(linked_list* ll, float data){
+    node* app = node_init_hanging(data);
+    //if the list is empty first becomes app
+    if (ll->first == NULL){
+        ll->first = app;
+        return;
+    }
+    //
+    node* curr_node = ll->first;
+    while (curr_node->next != NULL){
+        curr_node = curr_node->next;
+    }
+    set_next(curr_node, app);
+}
 
 void llist_prepend(linked_list* ll, float data){
     node* prep = node_init_hanging(data);
-    //if the list is empty first and last both become prep
+    //if the list is empty first becomes prep
     if (ll->first == NULL){
         ll->first = prep;
         return;
@@ -72,7 +75,7 @@ void llist_prepend(linked_list* ll, node* prep){
 }
 #endif //DYNAMIC
 //gets node at index
-node* index(linked_list* ll, int index){
+node* get_at(linked_list* ll, int index){
     node* curr_node = ll->first;
     if (curr_node == NULL) return NULL;
     for (int i = 0; i < index; ++i) {
@@ -81,5 +84,14 @@ node* index(linked_list* ll, int index){
         }
     }
     return curr_node;
+}
+
+void llist_print(linked_list* ll){
+    node* curr_node = ll->first;
+    while (curr_node != NULL){
+        printf("[%.2f] ", curr_node->data);
+        curr_node = curr_node->next;
+    }
+    printf("\n");
 }
 #endif //LINKED_LIST_LL_H
