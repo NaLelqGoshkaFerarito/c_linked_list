@@ -32,11 +32,6 @@ node* node_init_hanging(float data){
     return node_init(data, NULL, NULL);
 }
 
-//free the memory allocated in one of the node_init function
-void node_destroy(node* tbd){
-    free(tbd);
-}
-
 #else
 
 //pass a pointer to a node which is to be initialized and its members
@@ -61,5 +56,12 @@ void set_next(node* current_node, node* next_node){
 void set_prev_next(node* current_node, node* prev_node, node* next_node){
     set_next(current_node, next_node);
     set_prev(current_node, prev_node);
+}
+
+void swap(node* n1, node* n2){
+    float temp_data = 0;
+    temp_data = n1->data;
+    n1->data = n2->data;
+    n2->data = temp_data;
 }
 #endif //LINKED_LIST_NODE_H

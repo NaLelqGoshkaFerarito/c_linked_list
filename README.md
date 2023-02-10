@@ -14,7 +14,7 @@ Contains the implementation of the `node` struct and the functions it needs to o
 - `void set_prev` - sets the previous node and the next node of the previous node
 - `void set_next` - sets the next node and the previous node of the next node
 - `void set_prev_next` - combines the functionality of the last two functions
-
+- `void swap` - swaps the data of the two given nodes
 ## ll.h
 Contains the implementation of the `linked_list` struct and various functions that make using it easier to navigate
 

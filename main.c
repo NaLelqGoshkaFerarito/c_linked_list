@@ -40,6 +40,9 @@ void test_linked_list_basic(){
     llist_prepend(&list, 16.2f);
 
     llist_print(&list);
+    printf("Swapping head and head->next\n");
+    swap(list.first->next, list.first);
+    llist_print(&list);
 
     llist_destroy(&list);
 
@@ -62,6 +65,7 @@ void test_linked_list_index(){
     llist_prepend(&list, 16.2f);
 
     assert(16.2f == get_at(&list, 0)->data);
+    llist_destroy(&list);
     printf("Basic linked list indexing test was a success\n\n");
 }
 
@@ -83,6 +87,7 @@ void test_linked_list_append(){
 
     llist_print(&list);
     assert(16.2f == get_at(&list, 5)->data);
+    llist_destroy(&list);
     printf("Linked list appending test was a success\n\n");
 }
 
